@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>限制输入字符长度</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 100px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">用户名</label>
+            <input id="name" type="email" class="form-control" id="exampleInputEmail1" placeholder="用户名">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">密码</label>
+            <input id="passwd" type="password" class="form-control" id="exampleInputPassword1" placeholder="密码">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">选择文件</label>
+            <input type="file" id="exampleInputFile">
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> 记住我
+            </label>
+        </div>
+        <button id="btn" type="submit" class="btn btn-primary btn-block">提交</button>
+    </form>
+</div>
+<script>
+    (function () {
+        var name = document.getElementById("name"),
+            passwd = document.getElementById("passwd"),
+            btn = document.getElementById("btn");
+
+        function empty(ele,obj) {
+            ele.value = ele.value.replace(/\s+/g,'');
+            if (!ele.value) {
+                alert(obj.getAttribute("placeholder") + "不能为空！")
+            }
+        }
+        btn.onclick = function () {
+            empty(name,name);
+            empty(passwd,passwd);
+        }
+    })();
+</script>
+</body>
+</html>

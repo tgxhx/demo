@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标移入改变透明度</title>
+    <style>
+
+        .container {
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        ul {
+            padding: 10px;
+            border: 1px solid #999;
+            float: left;
+        }
+
+        li {
+            list-style-type: none;
+            float: left;
+            margin-right: 10px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+
+        li:last-child {
+            margin-right: 0;
+        }
+
+        li > img {
+            opacity: 0.3;
+            filter: alpha(opacity=30);
+        }
+
+        /*li > img:hover {
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }*/
+        .opacity {
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul id="ul1">
+        <li><img src="chrome-logo.png" alt=""></li>
+        <li><img src="firefox-logo.png" alt=""></li>
+        <li><img src="ie-logo.png" alt=""></li>
+        <li><img src="opera-logo.png" alt=""></li>
+        <li><img src="safari-logo.png" alt=""></li>
+    </ul>
+</div>
+<script>
+    var imgs = document.getElementsByTagName("img");
+    for (var i = 0; i < imgs.length; i++) {
+        imgs[i].onmouseover = function () {
+            this.className = 'opacity';
+        }
+        imgs[i].onmouseout = function () {
+            this.className = '';
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易时钟</title>
+    <style>
+        .container {
+            width: 960px;
+            margin: 0 auto;
+            padding: 100px 0;
+        }
+        .div1 {
+            width:123px;
+            height:30px;
+            background-color: #3c3f41;
+            padding:10px 15px;
+            color: #ffffff;
+        }
+        span {
+            display: inline-block;
+            width:30px;
+            height: 30px;
+            background-color: #fff;
+            color: #000000;
+            line-height:30px;
+            text-align: center;
+            -webkit-box-shadow: inset 1px 1px 1px #363838;
+            -moz-box-shadow: inset 1px 1px 1px #363838;
+            box-shadow: inset 1px 1px 1px #363838;
+        }
+        .time {
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="div1">
+        <div class="time">
+            <span></span>：<span ></span>：<span></span>
+        </div>
+    </div>
+</div>
+<script>
+    clock();
+    function clock() {
+        var curtime = new Date();
+        var hour = curtime.getHours(),
+            min = curtime.getMinutes(),
+            sec = curtime.getSeconds(),
+            arr = [hour, min, sec],
+            span = document.getElementsByTagName("span");
+        for (var i in span) {
+            span[i].innerHTML = arr[i] <=9 ? '0' + arr[i] : arr[i];
+        }
+    }
+    setInterval(clock, 1000);
+</script>
+</body>
+</html>

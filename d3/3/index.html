@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全选/取消</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 600px;
+            margin: 0 auto;
+            padding: 100px 0;
+        }
+
+        ul {
+            width: 350px;
+            border: 1px solid #666;
+            border-radius: 5px;
+            padding: 20px 0;
+            text-indent: 20px;
+        }
+
+        li {
+            list-style-type: none;
+            line-height: 30px;
+        }
+        h1 {
+            font-weight:normal;
+            margin-bottom:20px;
+        }
+        hr {
+            margin:10px 0;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <ul>
+        <h1>请选择你的爱好</h1>
+
+        <li><input type="checkbox"><label> Chrome</label></li>
+        <li><input type="checkbox"><label> Firefox</label></li>
+        <li><input type="checkbox"><label> Opera</label></li>
+        <li><input type="checkbox"><label> Internet Explorer</label></li>
+        <li><input type="checkbox"><label> Safari</label></li>
+        <hr>
+        <li><input id="click" type="checkbox"><label>全选/取消</label></li>
+
+    </ul>
+
+</div>
+
+<script>
+    var chklist = document.getElementsByTagName('input');
+    function checkAll() {
+        for (var i = 0; i < chklist.length; i++) {
+            if (chklist[i].type == 'checkbox') {
+                chklist[i].checked = true;
+            } 
+        }
+    }
+    function clearAll() {
+        for (var i = 0; i < chklist.length; i++) {
+            if (chklist[i].type == 'checkbox') {
+                chklist[i].checked = false;
+            }
+        }
+    }
+    document.getElementById("click").onclick = function () {
+        if (this.checked == true) {
+            checkAll();
+        } else {
+            clearAll();
+        }
+    }
+</script>
+</body>
+</html>

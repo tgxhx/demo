@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串操作</title>
+    <style>
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 100px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="div1">
+        <p>查看字符串中子字符串出现的索引</p>
+        <input type="text" id="name">在<span id="zm">abcdefghijklmnopqrstuvwxyz</span>的位置是<input type="text" id="value">
+        <button id="btn1">查看</button>
+    </div>
+    <div class="div1">
+        <p>转换成大小写</p>
+        <input type="text" id="name2">
+        <button id="btn2">小写</button>
+        <button id="btn3">大写</button>
+    </div>
+    <div class="div1">
+        <p>字符串去重</p>
+        <input type="text" id="name3">&nbsp;<input type="text" id="value3">
+        <button id="btn4">去重</button>
+    </div>
+    <div class="div1">
+        <p>去除字符前后空格</p>
+        <input type="text" id="name4">&nbsp;<input type="text" id="value4">
+        <button id="btn5">去重</button>
+    </div>
+</div>
+<script>
+    (function () {
+        function $(id) {
+            return typeof id === "string" ? document.getElementById(id) : id;
+        }
+
+        window.$ = $;
+        var name = $("name"),
+            zm = $("zm").innerHTML,
+            val = $("value"),
+            btn = $("btn1");
+        btn.onclick = function () {
+            val.value = zm.indexOf(name.value) + 1;
+        }
+
+        var name2 = $("name2"),
+            btn2 = $("btn2"),
+            btn3 = $("btn3");
+        btn2.onclick = function () {
+            alert(name2.value.toLowerCase());
+        }
+        btn3.onclick = function () {
+            alert(name2.value.toUpperCase());
+        }
+
+        var name3 = $("name3"),
+            val3 = $("value3"),
+            btn4 = $("btn4");
+
+        btn4.onclick = function () {
+            var str = name3.value;
+            var res = [];
+            var arr = str.split("");
+            for (var i = 0; i < arr.length; i++) {
+                if (res.indexOf(arr[i]) == -1) {
+                    res.push(arr[i]);
+                }
+            }
+            val3.value = res.join("");
+        }
+
+        var name4 = $("name4"),
+            val4 = $("value4"),
+            btn5 = $("btn5");
+        btn5.onclick = function () {
+            val4.value = '(' + name4.value.trim() + ')';
+        }
+    })();
+</script>
+</body>
+</html>

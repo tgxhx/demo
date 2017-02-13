@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav {
+            background-color: #eee;
+            width: 600px;
+            height: 40px;
+            margin: 0 auto;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            float: left;
+            line-height: 40px;
+            text-align: center;
+            position: relative;
+        }
+        ul li:hover ul {
+            display: block;
+        }
+        ul li ul {
+            position: absolute;
+            left:0;
+            top:40px;
+            display: none;
+        }
+        ul li ul li {
+            float: none;
+            background-color: #eeeeee;
+            margin-top:2px;
+        }
+
+        a {
+            display: block;
+            color: #000;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+
+        a:hover {
+            color: #fff;
+            background: #333333;
+        }
+    </style>
+</head>
+<body>
+<div id="nav">
+    <ul>
+        <li><a href="#">首页1</a></li>
+        <li><a href="#">首页2</a>
+            <ul>
+                <li><a href="#">Javascript</a></li>
+                <li><a href="#">jQuery</a></li>
+            </ul>
+        </li>
+        <li><a href="#">首页3</a>
+            <ul>
+                <li><a href="#">Chrome</a></li>
+                <li><a href="#">Firefox</a></li>
+            </ul>
+        </li>
+        <li><a href="#">首页4</a></li>
+        <li><a href="#">首页5</a></li>
+    </ul>
+</div>
+</body>
+</html>

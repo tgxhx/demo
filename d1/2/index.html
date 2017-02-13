@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击复制文本框内容</title>
+    <style>
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 100px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <textarea cols="" rows="2" id="text">用户定义的文本区域</textarea>
+    <input type="button" id="btn" value="复制代码"/>
+</div>
+<script>
+    (function () {
+        var text = document.getElementById("text");
+        document.getElementById("btn").onclick = function () {
+            text.select();
+            document.execCommand('Copy');
+            alert("已复制完成！");
+        }
+    })();
+</script>
+</body>
+</html>

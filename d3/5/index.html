@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>判断数字位数</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <style>
+        .container {
+            width: 600px;
+            margin: 0 auto;
+            padding: 100px 0;
+        }
+
+        span:first-of-type {
+            color: red;
+            font-size:20px;
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="container">
+    <form class="form-inline">
+        <input class="form-control" type="text">
+        <button id="btn" class="btn btn-primary">查看位数</button>
+        <span>&nbsp;?&nbsp;</span><span> 位数</span>
+    </form>
+</div>
+
+<script>
+    var oInput = document.getElementsByTagName('input')[0],
+        oBtn = document.getElementById('btn'),
+        oSpan = document.getElementsByTagName('span')[0];
+    oInput.onkeyup = function () {
+        this.value = this.value.replace(/[^\d]/, '');
+    }
+    oBtn.onclick = function (e) {
+        e.preventDefault();
+        oSpan.innerHTML = '&nbsp;' + oInput.value.length;
+    }
+
+</script>
+</body>
+</html>

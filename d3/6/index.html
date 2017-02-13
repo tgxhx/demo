@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示单击坐标</title>
+    <style>
+        .container {
+            width: 600px;
+            margin: 0 auto;
+            padding: 100px 0;
+        }
+        span {
+            color: red;
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="container">
+    <p>X轴为：<span>0</span> Y轴为：<span>0</span></p>
+</div>
+
+<script>
+    var oSpan0 = document.getElementsByTagName('span')[0],
+        oSpan1 = document.getElementsByTagName('span')[1];
+
+        document.onclick = function (e) {
+            var e = e || window.event;
+            oSpan0.innerHTML = e.clientX;
+            oSpan1.innerHTML = e.clientY;
+        }
+</script>
+</body>
+</html>

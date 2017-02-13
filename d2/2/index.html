@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>ToolTip效果2</title>
+    <style>
+        body {
+            font-size: 18px;
+            line-height: 1.8;
+            font-family: "Microsoft YaHei", "微软雅黑";
+        }
+
+        #demo {
+            width: 500px;
+            margin: 30px auto;
+            padding: 20px 30px;
+            position: relative;
+            background-color: #fff;
+        }
+
+        #demo h2 {
+            color: #03F;
+        }
+
+        #demo .tooltip {
+            color: #03F;
+            cursor: pointer;
+        }
+
+        .tooltip-box {
+            display: block;
+            background-color: #ffffff;
+            border: 1px solid #66CCFF;
+            color: #333;
+            border-radius: 5px;
+            overflow: auto;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="demo">
+    <p>Google Chrome，是一个由<a class="tooltip" id="tooltip1">Google</a>公司开发的网页浏览器。该浏览器是基于其他
+        <a class="tooltip" id="tooltip2">开源软件</a>所撰写，包括<a class="tooltip" id="tooltip3">WebKit</a>，目标是提升稳定性、速度和安全性，并创造出简单且有效率的使用者界面。
+    </p>
+</div>
+<script type="text/javascript">
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+    var isIE = navigator.userAgent.indexOf("MSIE") > -1 || navigator.userAgent.indexOf("rv:11") > -1;
+
+    function showDiv(obj, id, html, width, height) {
+        if ($(id) == null) {
+            var toolTip = document.createElement("div");
+            obj.appendChild(toolTip);
+            toolTip.id = id;
+            toolTip.className = "tooltip-box";
+            toolTip.innerHTML = html;
+
+            toolTip.style.width = width ? width + "px" : "auto";
+            toolTip.style.height = height ? height + "px" : "auto";
+
+            var left = obj.offsetLeft + "px";
+            var top = obj.offsetTop + 25 + "px";
+
+            //left不让ToolTip提示框超出浏览器
+            if (left + toolTip.offsetWidth > document.body.clientWidth) {
+                var demo = $("demo").offsetLeft;
+                left = document.body.clientWidth - toolTip.offsetWidth - demo - 20;
+                if (left < 0) {
+                    left = 0;
+                }
+            }
+
+            toolTip.style.position = "absolute";
+            toolTip.style.left = left;
+            toolTip.style.top = top;
+
+            if (!width && isIE) {
+                toolTip.style.width = toolTip.offsetWidth;
+                toolTip.style.height = toolTip.offsetHeight;
+            }
+
+
+            toolTip.onmouseleave = function () {
+                this.style.display = "none";
+                console.log(this);
+            }
+        } else {
+            $(id).style.display = "block";
+        }
+    }
+
+    function addEvent(element, event, callback) {
+        if (element.addEventListener) {
+            element.addEventListener(event, callback, false);
+        } else if (element.attachEvent) {
+            element.attachEvent('on' + event, callback);
+        }
+    }
+
+    //事件冒泡
+    //用mouseover，mouseenter在demo的子元素中无法触发
+    addEvent(demo, "mouseover", function (e) {
+        var event = e || window.event;
+        var target = event.target || event.srcElement;
+        if (target.className == "tooltip") {
+            var _id,
+                _html,
+                _width = 800,
+                _height = 600;
+
+            switch (target.id) {
+                case "tooltip1":
+                    _id = "t1";
+                    _html = "<iframe src='http://baike.baidu.com/item/" + target.innerText + "' width='1920' height='1080'></iframe>";
+                    break;
+                case "tooltip2":
+                    _id = "t2";
+                    _html = "<iframe src='http://baike.baidu.com/item/" + target.innerText + "' width='1920' height='1080'></iframe>";
+                    break;
+                case "tooltip3":
+                    _id = "t3";
+                    _html = "<iframe src='http://baike.baidu.com/item/" + target.innerText + "' width='1920' height='1080'></iframe>";
+                    break;
+            }
+            showDiv(target, _id, _html, _width, _height);
+        }
+    })
+
+    /*var t1 = $("tooltip1");
+     t1.onmouseenter = function () {
+     showDiv(t1, "t1", "<iframe src='http://baike.baidu.com/item/" + t1.innerText + "' width='800' height='600'></iframe>", 800, 600);
+     }
+     */
+
+</script>
+</body>
+</html>

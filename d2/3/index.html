@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网页换肤</title>
+    <style>
+        body {
+
+        }
+
+        .container {
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        ul > li {
+            list-style-type: none;
+            float: left;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        #red {
+            border: 10px solid red;
+            border-radius: 2px;
+            background-color: red;
+            color: #ffffff;
+        }
+
+        #green {
+            border: 10px solid green;
+            border-radius: 2px;
+            background-color: green;
+            color: #ffffff;
+        }
+
+        #blue {
+            border: 10px solid blue;
+            border-radius: 2px;
+            background-color: blue;
+            color: #ffffff;
+        }
+
+        .red {
+            background: #ff8e95;
+        }
+
+        .green {
+            background: #7cff9e;
+        }
+
+        .blue {
+            background: #799dff;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul id="ul1">
+        <li id="red">红</li>
+        <li id="green">绿</li>
+        <li id="blue">蓝</li>
+    </ul>
+</div>
+<script>
+    var ul = document.getElementById("ul1");
+
+    ul.onclick = function (e) {
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+        if (target.nodeName.toLowerCase() == 'li') {
+            document.body.className = target.id;
+        }
+    }
+</script>
+</body>
+</html>

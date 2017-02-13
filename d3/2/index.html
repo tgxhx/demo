@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .clearfix:before,
+        .clearfix:after {
+            content: " ";
+            display: table;
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+
+        .container {
+            width: 600px;
+            margin: 0 auto;
+            padding: 100px 0;
+        }
+
+        ul#title {
+            height: 40px;
+            background-color: #f6f6f6;
+            border: 1px solid #e2e2e2;
+            border-bottom: 1px solid #2eada6;
+            text-align: center;
+            padding-bottom: 1px;
+        }
+
+        ul#title li {
+            float: left;
+            line-height: 39px;
+            width: 80px;
+            list-style-type: none;
+            cursor: pointer;
+        }
+
+        li.active {
+            border-bottom: 3px solid #2eada6;
+            color: #2eada6;
+        }
+
+        #div1 div {
+            padding-left: 20px;
+            border: 1px solid #e2e2e2;
+            border-top: none;
+        }
+        #div1 div ul {
+            /*width:320px;*/
+            float: left;
+        }
+
+        #div1 li {
+            line-height: 35px;
+        }
+        img {
+            float: right;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <ul id="title">
+        <li class="active">哈士奇</li>
+        <li>折耳猫</li>
+        <li>柴犬</li>
+    </ul>
+    <div id="div1">
+        <div class="clearfix">
+            <ul>
+                <li>中文学名：西伯利亚雪橇犬</li>
+                <li>别 称：哈士奇、二哈、撒手没、拆迁办主任</li>
+                <li>分布区域：西伯利亚东北部，格陵兰南部</li>
+                <li>原产地 ：俄罗斯西伯利亚地区</li>
+                <li>体 型：中型犬</li>
+                <li>适合食物：狗粮</li>
+                <li>寿 命：10年以上</li>
+                <li>体 高： 雄犬肩高53-58CM，雌犬51-56CM</li>
+                <li>体 重: 雄犬20-27公斤,雌犬16-23公斤</li>
+                <li>智商排名： 45名</li>
+            </ul>
+            <img src="haski.png" height="256" width="256"/></div>
+        <div class="clearfix" style="display: none;">
+            <ul>
+                <li>中文学名：折耳猫</li>
+                <li>别 称：苏格兰折耳猫</li>
+                <li>种： 猫</li>
+                <li>亚 种：苏格兰折耳猫</li>
+                <li>英文名：Scottish Fold</li>
+                <li>原产地： 英国苏格兰</li>
+                <li>原产地：英国苏格兰</li>
+                <li>适宜用途：伴侣</li>
+            </ul>
+            <img src="cat.jpg" height="256" width="256"/></div>
+        <div class="clearfix" style="display: none;">
+            <ul>
+                <li>中文学名：西巴犬</li>
+                <li>别 称：doge</li>
+                <li>分布区域： 日本、中国、美国</li>
+                <li>分布区域：日本、中国、美国</li>
+                <li>体 型：小型犬</li>
+                <li>用 途：工作犬、伴侣犬</li>
+                <li>性 格： 招人喜爱，温和 ，警觉，独立</li>
+                <li>英文名： Shiba Inu、Beilika</li>
+                <li>平均寿命: 10-12岁</li>
+            </ul>
+            <img src="doge.png" height="256" width="256"/>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function $(id) {
+        return typeof id === 'string' ? document.getElementById(id) : id;
+    }
+    var list = $("title").getElementsByTagName('li'),
+        divs = $("div1").getElementsByTagName('div');
+    for (var i = 0; i < list.length; i++) {
+        list[i].index = i;
+        list[i].onmouseover = function () {
+            //先清除所有li的class
+            for (var j = 0; j < list.length; j++) {
+                list[j].className = '';
+                divs[j].style.display = 'none';
+            }
+            this.className = 'active';
+            divs[this.index].style.display = 'block';
+        }
+    }
+</script>
+</body>
+</html>

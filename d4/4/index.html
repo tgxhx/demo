@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>返回顶部（缓冲）</title>
+    <style type="text/css">
+        #btn {
+            width: 40px;
+            height: 40px;
+            position: fixed;
+            right: 65px;
+            bottom: 30px;
+            display: none;
+            background: url(images/top_bg.png) no-repeat left top;
+        }
+
+        #btn:hover {
+            background: url(images/top_bg.png) no-repeat 0 -39px;
+        }
+
+        .box {
+            width: 1190px;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var obtn = document.getElementById("btn");
+
+            //获取可视区域的高度
+            var clientHeight = document.documentElement.clientHeight;
+
+            //滚动条滚动时触发
+            window.onscroll = function () {
+                var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+                if (osTop >= clientHeight) {
+                    obtn.style.display = "block";
+                } else {
+                    obtn.style.display = "none";
+                }
+            }
+
+            //设置定时器
+            var time = null;
+            obtn.onclick = function () {
+                time = setInterval(function () {
+                    //获取滚动条距离顶部的高度
+                    var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+                    var speed = Math.ceil(osTop / 6);
+                    var r = osTop - speed;
+                    document.documentElement.scrollTop = document.body.scrollTop = r;
+                    console.log(osTop);
+                    if (osTop == 0) {
+                        clearInterval(time);
+                    }
+                }, 30);
+            }
+        }
+    </script>
+</head>
+<body>
+<a href="javascript:;" id="btn" title="回到顶部"></a>
+<div class="box">
+    <img src="images/tb_bg.jpg" alt=""/>
+</div>
+</body>
+</html>

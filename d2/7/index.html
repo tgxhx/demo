@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高考倒计时</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .container {
+            width: 960px;
+            margin: 0 auto;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: normal;
+            font-size: 40px;
+            color: #ff3a45;
+        }
+
+        .time {
+            font-size: 50px;
+            font-weight: normal;
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="div1">
+        <h1>2017年高考倒计时</h1>
+        <p>2017高考时间：2017年6月7、8、9日</p>
+        <p>目前距离2017年高考还有</p>
+        <div class="time">
+            <span></span>天<span></span>时<span></span>分<span></span>秒
+        </div>
+    </div>
+</div>
+<script>
+    clock();
+    function clock() {
+        var curtime = new Date(),
+            endtime = new Date('2017/6/7,08:00:00'),
+            offsettime = Math.ceil((endtime.getTime() - curtime.getTime()) / 1000);
+
+        var d = Math.floor(offsettime / (24 * 60 * 60)),
+            h = Math.floor(offsettime / (60 * 60) % 24),
+            m = Math.floor(offsettime / 60 % 60),
+            s = Math.floor(offsettime % 60);
+
+        var arr = [d, h, m, s],
+            span = document.getElementsByTagName("span");
+        for (var i in span) {
+            span[i].innerHTML = arr[i];
+        }
+    }
+    setInterval(clock,1000);
+</script>
+</body>
+</html>

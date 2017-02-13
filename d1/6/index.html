@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>提示剩余可输入字数</title>
+    <style>
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 100px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <textarea cols="30" rows="10" id="text" onkeyup="words(this)" onmousedown="words(this)">用户定义的文本区域</textarea>
+    <div>
+        还可以输入<span style="font-family: Georgia; font-size: 30px; color: red;" id="word">20</span>个字符
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        words($("text"));
+    }
+    function $(id) {
+        return typeof id === 'string' ? document.getElementById(id) : id;
+    }
+
+    var maxlen = 20;
+
+    function getLen(str) {
+        var len = 0;
+        var i;
+        for (i = 0; i < str.length; i++) {
+            if (str.charCodeAt(i) < 128) {
+                len++;
+            } else {
+                len += 2;
+            }
+        }
+        return len;
+    }
+
+    function words(w) {
+        var word = $("word"),
+            str = w.value,
+            myLen = getLen(str);
+        if (myLen > maxlen * 2) {
+            w.value = str.substring(0, maxlen);
+        } else {
+            word.innerHTML = Math.floor((maxlen * 2 - myLen) / 2);
+        }
+    }
+</script>
+</body>
+</html>
