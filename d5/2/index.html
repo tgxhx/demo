@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击展开</title>
+    <style>
+        body {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        #panel {
+            background-color: #e8e8e8;
+            width: 600px;
+            display: block;
+            margin: 0 auto;
+            padding: 5px;
+            font-size: 14px;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .slide {
+            margin: 0 auto;
+            padding: 0;
+            width: 600px;
+            border-top: 4px solid gray;
+        }
+
+        .btnslide {
+            background-color: gray;
+            width: 120px;
+            height: 30px;
+            text-align: center;
+            display: block;
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="jquery-2.1.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#strHref").click(function () {
+                if ($("#hide").is(":visible")) {
+                 $("#hide").hide(1000);
+                 $("#strHref").text("收起-");
+                } else {
+                 $("#hide").show(1000);
+                 $("#strHref").text("更多选项+")
+                 }
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="panel">
+    <p>手机-商品筛选</p>
+    <p>网络：移动4G 联通4G 电信4G</p>
+    <div id="hide" style="display: none;">
+        <p>价格：5000以上 4000-4000 3000-3000</p>
+        <p>特点：高通骁龙821</p>
+    </div>
+</div>
+<p class="slide">
+    <a href="#" id="strHref" class="btnslide">更多选项+</a>
+</p>
+</body>
+</html>

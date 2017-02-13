@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动展开</title>
+    <style>
+        body {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        #panel {
+            background-color: #e8e8e8;
+            width: 950px;
+            display: block;
+            margin: 0 auto;
+            /*padding: 5px;*/
+            height: auto;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .content {
+            margin: 0 auto;
+            padding: 10px;
+            width: 940px;
+            background-color: #333;
+            text-align: center;
+            height: 40px;
+            color: #FFFFFF;
+        }
+    </style>
+    <script>
+        var h = 0;
+        function addH() {
+            if (h < 300) {
+                h += 5;
+                document.getElementById("panel").style.height = h + "px";
+            }
+            else {
+                return;
+            }
+            setTimeout("addH()",30);
+        }
+        
+        function subH() {
+            if (h > 0) {
+                h -= 5;
+                document.getElementById("panel").style.height = h + "px";
+            }
+            else {
+//                document.getElementById("panel").style.overflow = "none";
+                return;
+            }
+            setTimeout("subH()",30);
+        }
+        
+        window.onload = function showAds() {
+            addH();
+            setTimeout("subH()",5000);
+        }
+        
+    </script>
+</head>
+<body>
+<div id="panel">
+    <h1>欢迎来到果壳网</h1>
+    <h2>大幅广告</h2>
+</div>
+<div class="content">
+    果壳网欢迎你
+    <br/>
+    正文
+</div>
+</body>
+</html>
