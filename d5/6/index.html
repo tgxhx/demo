@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿豆瓣FM弹出</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .db {
+            position: fixed;
+            left:0;
+            bottom: 50%;
+        }
+
+        .dbmove {
+            background: url("douban.png") no-repeat 0 0;
+            width: 150px;
+            height: 33px;
+            float: left;
+            position: relative;
+            left:-150px;
+            bottom:0px;
+            /*border-right: 1px solid #ccc;*/
+        }
+
+        #dbhide {
+            background: url("douban.png") no-repeat -151px 0;
+            width: 30px;
+            height: 33px;
+            float: left;
+            display: none;
+        }
+
+        #dbshow {
+            background: url("douban.png") no-repeat -180px 0;
+            width: 33px;
+            height: 33px;
+            float: left;
+            position: relative;
+            left:-150px;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#dbshow").click(function () {
+                $(this).hide();
+                $(".dbmove").animate({left: 0}, 500, function () {
+                    $("#dbhide").show();
+                });
+            })
+            $("#dbhide").click(function () {
+                $(this).hide();
+                $(".dbmove").animate({left: -150}, 500, function () {
+                    $("#dbshow").show();
+                })
+            })
+        });
+    </script>
+</head>
+<body>
+<div class="db">
+    <div class="dbmove">
+    </div>
+    <a href="javascript:" id="dbhide"></a>
+    <a href="javascript:" id="dbshow"></a>
+</div>
+
+</body>
+</html>
